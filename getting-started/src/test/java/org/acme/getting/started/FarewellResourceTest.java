@@ -1,24 +1,24 @@
 package org.acme.getting.started;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
+import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
-import org.junit.jupiter.api.Test;
-
-import io.quarkus.test.junit.QuarkusTest;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-public class GreetingResourceTest {
+public class FarewellResourceTest {
 
     @Test
     public void testHelloEndpoint() {
         given()
-                .when().get("/hello")
+                .when().get("/bye")
                 .then()
                 .statusCode(200)
-                .body(is("hello w"));
+                .body(is("bye"));
     }
 
     @Test
@@ -26,10 +26,10 @@ public class GreetingResourceTest {
         String uuid = UUID.randomUUID().toString();
         given()
                 .pathParam("name", uuid)
-                .when().get("/hello/greeting/{name}")
+                .when().get("/bye/farewell/{name}")
                 .then()
                 .statusCode(200)
-                .body(is("hello " + uuid));
+                .body(is("bye " + uuid));
     }
 
 }

@@ -43,10 +43,10 @@ public class FruitResource {
 
     @GET
     @Path("{id}")
-    public Fruit getSingle(@PathParam Integer id) {
+    public Fruit getSingleddfff(@PathParam Integer id) {
         Fruit entity = entityManager.find(Fruit.class, id);
         if (entity == null) {
-            throw new WebApplicationException("Fruit with id of " + id + " does not exist.", 404);
+            throw new WebApplicationException("Fruit  with id of " + id + " does not exist.", 404);
         }
         return entity;
     }
